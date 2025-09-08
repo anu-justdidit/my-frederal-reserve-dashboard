@@ -1,4 +1,4 @@
-# app.py - FIXED VERSION
+# app.py - FIXED FOR RENDER DEPLOYMENT
 import dash
 from dash import dcc, html, dash_table
 from dash.dependencies import Input, Output, State
@@ -101,7 +101,7 @@ print(f"📊 Available indicators: {numeric_columns}")
 
 # Create Dash app
 app = dash.Dash(__name__, title="Advanced FRED Economic Dashboard")
-server = app.server
+server = app.server  # CRITICAL: This makes the server available to Render
 
 app.layout = html.Div([
     # Header
@@ -256,7 +256,7 @@ def update_all_charts(primary_ind, secondary_ind, start_date, end_date, chart_ty
     
     return fig_main, fig_primary, fig_secondary, stats
 
-# FIXED: Only one if __name__ block with proper indentation
+# THIS IS THE ONLY if __name__ BLOCK - CRITICAL FOR RENDER
 if __name__ == '__main__':
     # Get port from environment variable or default to 8053
     port = int(os.environ.get('PORT', 8053))
@@ -275,10 +275,3 @@ if __name__ == '__main__':
         dev_tools_ui=debug,
         dev_tools_props_check=debug
     )
-
-    # This line is CRITICAL - makes server available to gunicorn
-server = app.server
-
-# This should be the last lines in your file
-if __name__ == '__main__':
-    app.run_server(debug=False)
