@@ -1,5 +1,6 @@
-dash==2.14.2 
-plotly==5.18.0 
-pandas==2.2.3 
-numpy==1.26.4 
-"# Crypto dashboard dependencies" 
+echo dash==2.14.2 > requirements.txt
+echo plotly==5.18.0 >> requirements.txt
+echo pandas==2.2.3 >> requirements.txt
+echo numpy==1.26.4 >> requirements.txt
+echo requests==2.31.0 >> requirements.txt
+echo python-dotenv==1.0.0 >> requirements.txt
